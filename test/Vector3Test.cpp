@@ -36,6 +36,13 @@ TEST(Vector3, scalarMultiplication)
 	ASSERT_EQ(2 * v, expected);
 }
 
+TEST(Vector3, scalarDivision)
+{
+	Vector3 v { 2.0, 4.0, 6.0 };
+	Vector3 expected { 1.0, 2.0, 3.0 };
+	ASSERT_EQ(v / 2, expected);
+}
+
 TEST(Vector3, assignment)
 {
 	Vector3 v { 1.0, 2.0, 3.0 };

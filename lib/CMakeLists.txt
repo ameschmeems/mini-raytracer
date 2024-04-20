@@ -9,5 +9,7 @@ file(GLOB HEADER_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/include/modern/*.
 target_sources(rt-core
 	PRIVATE
 		Vector3.cpp
+		Image.cpp
+		Ray.cpp
 		${HEADER_LIST}
 )

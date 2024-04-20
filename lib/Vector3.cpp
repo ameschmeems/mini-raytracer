@@ -24,7 +24,7 @@ Vector3 &Vector3::operator=(const Vector3 &rhs)
 	return *this;
 }
 
-Vector3 &Vector3::operator=(const Vector3 &&rhs)
+Vector3 &Vector3::operator=(Vector3 &&rhs) noexcept
 {
 	_vector = std::move(rhs._vector);
 	return *this;
@@ -48,12 +48,26 @@ Vector3 Vector3::operator-(const Vector3 &rhs) const
 	return Vector3 { temp[0], temp[1], temp[2] };
 }
 
+Vector3 Vector3::operator-() const
+{
+	return Vector3 { -_vector[0], -_vector[1], -_vector[2] };
+}
+
 Vector3 Vector3::operator*(float rhs) const
 {
 	std::vector<float> temp {};
 
 	for (auto n : _vector)
 		temp.push_back(n * rhs);
+	return Vector3 { temp[0], temp[1], temp[2] };
+}
+
+Vector3 Vector3::operator/(float rhs) const
+{
+	std::vector<float> temp {};
+
+	for (auto n : _vector)
+		temp.push_back(n / rhs);
 	return Vector3 { temp[0], temp[1], temp[2] };
 }
 
@@ -73,6 +87,21 @@ bool Vector3::operator==(const Vector3 &rhs) const
 bool Vector3::operator!=(const Vector3 &rhs) const
 {
 	return !((*this) == rhs);
+}
+
+float Vector3::x() const
+{
+	return _vector[0];
+}
+
+float Vector3::y() const
+{
+	return _vector[1];
+}
+
+float Vector3::z() const
+{
+	return _vector[2];
 }
 
 float Vector3::length() const
@@ -95,11 +124,6 @@ Vector3 Vector3::cross(const Vector3 &rhs) const
 }
 
 Vector3 operator*(float i, const Vector3 &rhs)
-{
-	return rhs * i;
-}
-
-Vector3 operator*(int i, const Vector3 &rhs)
 {
 	return rhs * i;
 }
