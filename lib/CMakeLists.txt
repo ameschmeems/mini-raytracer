@@ -11,5 +11,9 @@ target_sources(rt-core
 		Vector3.cpp
 		Image.cpp
 		Ray.cpp
+		Surface.cpp
+		Group.cpp
+		HitRecord.cpp
+		Sphere.cpp
 		${HEADER_LIST}
 )

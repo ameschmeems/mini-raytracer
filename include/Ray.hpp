@@ -10,6 +10,8 @@ public:
 	Ray(const Vector3 &origin, const Vector3 &direction);
 
 	Vector3 evaluate(float t);
+	const Vector3 &origin() const;
+	const Vector3 &direction() const;
 
 private:
 
