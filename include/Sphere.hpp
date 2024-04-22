@@ -14,6 +14,8 @@ public:
 
 private:
 
+	Vector3 _get_surface_normal(const Vector3 &p);
+
 	Vector3 _center {};
 	float _radius {};
 };

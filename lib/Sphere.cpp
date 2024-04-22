@@ -15,13 +15,11 @@ HitRecord Sphere::hit(Ray ray, float t0, float t1)
 	if (discriminant < 0)
 		return HitRecord {};
 	
-	float t_first { (-b + sqrtf(discriminant)) / float(2.0) };
-	float t_second { (-b - sqrtf(discriminant)) / float(2.0) };
-
+	float t_first { (-b + sqrtf(discriminant)) / static_cast<float>(2.0 * a) };
+	float t_second { (-b - sqrtf(discriminant)) / static_cast<float>(2.0 * a) };
 
 	float smaller { t_first < t_second ? t_first : t_second };
 	float bigger { t_first < t_second ? t_second : t_first };
-
 
 	HitRecord rec {};
 
@@ -29,11 +27,18 @@ HitRecord Sphere::hit(Ray ray, float t0, float t1)
 	{
 		rec.surface = this;
 		rec.t = smaller;
+		rec.normal = _get_surface_normal(ray.evaluate(rec.t));
 	}
 	else if (bigger > t0 && bigger < t1)
 	{
 		rec.surface = this;
 		rec.t = bigger;
+		rec.normal = _get_surface_normal(ray.evaluate(rec.t));
 	}
 	return rec;
+}
+
+Vector3 Sphere::_get_surface_normal(const Vector3 &p)
+{
+	return (p - _center) / _radius;
 }

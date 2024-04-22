@@ -13,3 +13,5 @@ macro(package_add_test TESTNAME)
 endmacro()
 
 package_add_test(Vector3 Vector3Test.cpp)
+package_add_test(Ray RayTest.cpp)
+package_add_test(Sphere SphereTest.cpp)
