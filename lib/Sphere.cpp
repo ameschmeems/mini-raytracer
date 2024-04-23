@@ -1,6 +1,6 @@
 #include "Sphere.hpp"
 
-Sphere::Sphere(Vector3 center, float radius, Vector3 color) : _center { center }, _radius { radius }, Surface { color }
+Sphere::Sphere(const Vector3 &center, float radius, const Vector3 &color) : _center { center }, _radius { radius }, Surface { color }
 {
 }
 
@@ -15,8 +15,8 @@ HitRecord Sphere::hit(Ray ray, float t0, float t1)
 	if (discriminant < 0)
 		return HitRecord {};
 	
-	float t_first { (-b + sqrtf(discriminant)) / static_cast<float>(2.0 * a) };
-	float t_second { (-b - sqrtf(discriminant)) / static_cast<float>(2.0 * a) };
+	float t_first { (-b + sqrtf(discriminant)) / (2.0f * a) };
+	float t_second { (-b - sqrtf(discriminant)) / (2.0f * a) };
 
 	float smaller { t_first < t_second ? t_first : t_second };
 	float bigger { t_first < t_second ? t_second : t_first };

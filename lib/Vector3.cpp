@@ -62,6 +62,15 @@ Vector3 Vector3::operator*(float rhs) const
 	return Vector3 { temp[0], temp[1], temp[2] };
 }
 
+Vector3 Vector3::operator*(const Vector3 &rhs) const
+{
+	std::vector<float> temp {};
+
+	for (int i = 0; i < _vector.size(); i++)
+		temp.push_back(_vector[i] * rhs._vector[i]);
+	return Vector3 { temp[0], temp[1], temp[2] };
+}
+
 Vector3 Vector3::operator/(float rhs) const
 {
 	std::vector<float> temp {};
@@ -121,6 +130,11 @@ Vector3 Vector3::cross(const Vector3 &rhs) const
 	float z { _vector[0] * rhs._vector[1] - _vector[1] * rhs._vector[0] };
 
 	return Vector3 { x, y, z };
+}
+
+Vector3 Vector3::normalized() const
+{
+	return *this / this->length();
 }
 
 Vector3 operator*(float i, const Vector3 &rhs)

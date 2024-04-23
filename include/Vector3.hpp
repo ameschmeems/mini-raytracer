@@ -20,6 +20,7 @@ public:
 	Vector3 operator-(const Vector3 &rhs) const;
 	Vector3 operator-() const;
 	Vector3 operator*(float rhs) const;
+	Vector3 operator*(const Vector3 &rhs) const;
 	Vector3 operator/(float rhs) const;
 	float &operator[](int n);
 	bool operator==(const Vector3 &rhs) const;
@@ -31,6 +32,7 @@ public:
 	float length() const;
 	float dot(const Vector3 &rhs) const;
 	Vector3 cross(const Vector3 &rhs) const;
+	Vector3 normalized() const;
 
 private:
 

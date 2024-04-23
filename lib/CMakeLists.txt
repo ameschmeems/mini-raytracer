@@ -15,5 +15,11 @@ target_sources(rt-core
 		Group.cpp
 		HitRecord.cpp
 		Sphere.cpp
+		Material.cpp
+		Light.cpp
+		AmbientLight.cpp
+		PointLight.cpp
+		DirectionalLight.cpp
+		Scene.cpp
 		${HEADER_LIST}
 )

@@ -36,6 +36,13 @@ TEST(Vector3, scalarMultiplication)
 	ASSERT_EQ(2 * v, expected);
 }
 
+TEST(Vector3, componentwiseMultiplication)
+{
+	Vector3 v { 1.0, 2.0, 3.0 };
+	Vector3 expected { 1.0, 4.0, 9.0 };
+	ASSERT_EQ(v * v, expected);
+}
+
 TEST(Vector3, scalarDivision)
 {
 	Vector3 v { 2.0, 4.0, 6.0 };
@@ -73,4 +80,11 @@ TEST(Vector3, crossProduct)
 	Vector3 w { 5.0, 6.0, 7.0 };
 	Vector3 expected { -3.0, 6.0, -3.0 };
 	ASSERT_EQ(v.cross(w), expected);
+}
+
+TEST(Vector3, normalized)
+{
+	Vector3 v { 6.0, 0.0, 0.0 };
+	Vector3 expected { 1.0, 0.0, 0.0 };
+	ASSERT_EQ(v.normalized(), expected);
 }
