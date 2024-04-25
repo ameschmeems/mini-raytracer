@@ -1,6 +1,6 @@
 #include "Sphere.hpp"
 
-Sphere::Sphere(const Vector3 &center, float radius, const Vector3 &color) : _center { center }, _radius { radius }, Surface { color }
+Sphere::Sphere(const Vector3 &center, float radius, const Material &material) : _center { center }, _radius { radius }, Surface { material }
 {
 }
 

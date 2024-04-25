@@ -3,19 +3,18 @@
 
 #include "HitRecord.hpp"
 #include "Ray.hpp"
+#include "Material.hpp"
 
 class Surface
 {
 public:
 
-	Surface(const Vector3 &color);
+	Surface() = default;
+	Surface(const Material &material);
 
 	virtual HitRecord hit(Ray ray, float t0, float t1) = 0;
-	const Vector3 &color() const;
 
-private:
-
-	Vector3 _color {};
+	Material material {};
 };
 
 #endif

@@ -1,10 +1,5 @@
 #include "Surface.hpp"
 
-Surface::Surface(const Vector3 &color) : _color { color }
+Surface::Surface(const Material &mat) : material { mat }
 {
-}
-
-const Vector3 &Surface::color() const
-{
-	return _color;
 }

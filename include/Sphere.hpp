@@ -8,7 +8,7 @@ class Sphere : public Surface
 {
 public:
 
-	Sphere(const Vector3 &center, float radius, const Vector3 &color);
+	Sphere(const Vector3 &center, float radius, const Material &material);
 
 	HitRecord hit(Ray ray, float t0, float t1);
 

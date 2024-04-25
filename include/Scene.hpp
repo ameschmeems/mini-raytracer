@@ -11,13 +11,13 @@ public:
 
 	Scene(Group &group);
 
-	void add_light(Light &light);
-	void raytrace(Image &image);
+	void add_light(Light *light);
+	Vector3 raytrace(Ray ray, float t0, float t1);
 
 private:
 
 	Group &_group;
-	std::vector<Light &> _lights {};
+	std::vector<Light*> _lights {};
 };
 
 #endif

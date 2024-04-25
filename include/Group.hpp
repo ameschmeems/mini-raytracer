@@ -10,12 +10,14 @@ class Group : public Surface
 {
 public:
 
+	Group() = default;
+
 	HitRecord hit(Ray ray, float t0, float t1);
-	void add_surface(Surface &surface);
+	void add_surface(Surface *surface);
 
 private:
 
-	std::vector<Surface&> _surfaces {};
+	std::vector<Surface*> _surfaces {};
 };
 
 #endif

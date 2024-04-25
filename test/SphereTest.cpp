@@ -4,7 +4,7 @@
 TEST(Sphere, intersection)
 {
 	Vector3 sphere_origin { 0.0, 0.0, 0.0 };
-	Sphere sphere { sphere_origin, 1.0, Vector3 {} };
+	Sphere sphere { sphere_origin, 1.0, Material {} };
 	
 	Vector3 ray_origin { 1.0, 1.0, 1.0 };
 	Vector3 ray_direction { -1.0, -1.0, -1.0 };
@@ -21,7 +21,7 @@ TEST(Sphere, intersection)
 TEST(Sphere, get_normal)
 {
 	Vector3 sphere_origin { 0.0, 0.0, 0.0 };
-	Sphere sphere { sphere_origin, 1.0, Vector3 {} };
+	Sphere sphere { sphere_origin, 1.0, Material {} };
 
 	Vector3 ray_origin { 1.0, 1.0, 1.0 };
 	Vector3 ray_direction { -1.0, -1.0, -1.0 };
