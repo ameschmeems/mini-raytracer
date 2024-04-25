@@ -22,8 +22,14 @@ Image::Image(int width, int height) : _bytes {}, _width { width }, _height { hei
 void Image::write_pixel(const Vector3 &color)
 {
 	int r = static_cast<int>(255 * color.x());
+	if (r > 255)
+		r = 255;
 	int g = static_cast<int>(255 * color.y());
+	if (g > 255)
+		g = 255;;
 	int b = static_cast<int>(255 * color.z());
+	if (b > 255)
+		b = 255;
 
 	_bytes += std::to_string(r);
 	_bytes += " ";

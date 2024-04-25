@@ -39,7 +39,7 @@ int main()
 
 	Vector3 sphere_color { 0.8, 0.6, 1.0 };
 	Vector3 sphere_ambient { sphere_color };
-	Vector3 sphere_specular { 0.9, 0.9, 0.9 };
+	Vector3 sphere_specular { sphere_color };
 	Vector3 sphere_reflectance { sphere_color };
 	Material sphere_material { sphere_color, sphere_specular, sphere_reflectance, 4.0f };
 
@@ -55,9 +55,9 @@ int main()
 
 	AmbientLight ambient { Vector3 { 0.1, 0.1, 0.1 } };
 	scene.add_light(&ambient);
-	PointLight point_light { Vector3 { 1.0, 1.0, -2.9 }, Vector3 { 0.9, 0.9, 0.9 } };
+	PointLight point_light { Vector3 { 0.5, 1.0, -2.9 }, Vector3 { 0.9, 0.9, 0.9 } };
 	scene.add_light(&point_light);
-	DirectionalLight directional_light { Vector3 { -1.0, 1.0, 0 }, Vector3 { 0.6, 0.6, 0.6 } };
+	DirectionalLight directional_light { Vector3 { -1.0, 1.0, 0 }, Vector3 { 0.7, 0.7, 0.7 } };
 	scene.add_light(&directional_light);
 
 	// Get position for upper left pixel
