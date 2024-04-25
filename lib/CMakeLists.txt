@@ -21,5 +21,6 @@ target_sources(rt-core
 		PointLight.cpp
 		DirectionalLight.cpp
 		Scene.cpp
+		Plane.cpp
 		${HEADER_LIST}
 )

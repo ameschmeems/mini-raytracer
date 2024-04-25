@@ -38,26 +38,33 @@ int main()
 	Vector3 delta_v { viewport_v / image_height };
 
 	Vector3 sphere_color { 0.8, 0.6, 1.0 };
-	Vector3 sphere_ambient { sphere_color };
+	Vector3 sphere_ambient { 0.4 * sphere_color };
 	Vector3 sphere_specular { sphere_color };
 	Vector3 sphere_reflectance { sphere_color };
-	Material sphere_material { sphere_color, sphere_specular, sphere_reflectance, 4.0f };
+	Material sphere_material { sphere_ambient, sphere_specular, sphere_reflectance, 2.0f, Vector3 {} };
 
 	Sphere sphere { Vector3 { 0.0, 0.0, -4.0 }, 1.0, sphere_material };
 
-	Sphere sphere_2 {Vector3 { -2.5, 0.0, -4.0 }, 1.0, sphere_material};
+	Vector3 metal_sphere_color { 0.86, 0.86, 0.88 };
+	Vector3 metal_sphere_ambient { 0.4 * metal_sphere_color };
+	Vector3 metal_sphere_specular { metal_sphere_color };
+	Vector3 metal_sphere_reflectance { metal_sphere_color };
+	Vector3 metal_sphere_mirror { 0.5, 0.5, 0.5 };
+	Material metal_sphere_material { metal_sphere_ambient, metal_sphere_specular, metal_sphere_reflectance, 124.0f, metal_sphere_mirror };
+
+	Sphere metal_sphere {Vector3 { -2.5, 0.0, -4.0 }, 1.0, metal_sphere_material};
 
 	Group group {};
 	group.add_surface(&sphere);
-	group.add_surface(&sphere_2);
+	group.add_surface(&metal_sphere);
 
 	Scene scene { group };
 
 	AmbientLight ambient { Vector3 { 0.1, 0.1, 0.1 } };
 	scene.add_light(&ambient);
-	PointLight point_light { Vector3 { 0.5, 1.0, -2.9 }, Vector3 { 0.9, 0.9, 0.9 } };
+	PointLight point_light { Vector3 { -1.5, 1.0, -2.9 }, Vector3 { 0.9, 0.9, 0.9 } };
 	scene.add_light(&point_light);
-	DirectionalLight directional_light { Vector3 { -1.0, 1.0, 0 }, Vector3 { 0.7, 0.7, 0.7 } };
+	DirectionalLight directional_light { Vector3 { 1.0, 1.0, 3.0 }, Vector3 { 2, 2, 2 } };
 	scene.add_light(&directional_light);
 
 	// Get position for upper left pixel

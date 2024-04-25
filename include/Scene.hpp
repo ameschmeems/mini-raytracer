@@ -12,7 +12,7 @@ public:
 	Scene(Group &group);
 
 	void add_light(Light *light);
-	Vector3 raytrace(Ray ray, float t0, float t1);
+	Vector3 raytrace(Ray ray, float t0, float t1, int recursive_depth=1);
 
 private:
 
