@@ -9,7 +9,7 @@ public:
 
 	AmbientLight(const Vector3 &intensity);
 
-	Vector3 illuminate(Ray ray, HitRecord hrec) const;
+	Vector3 illuminate(Ray ray, HitRecord hrec, Group &group) const;
 
 private:
 

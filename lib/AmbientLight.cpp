@@ -5,7 +5,7 @@ AmbientLight::AmbientLight(const Vector3 &intensity) : _intensity { intensity }
 {
 }
 
-Vector3 AmbientLight::illuminate(Ray ray, HitRecord hrec) const
+Vector3 AmbientLight::illuminate(Ray ray, HitRecord hrec, Group &group) const
 {
 	return _intensity * hrec.surface->material.ambient;
 }

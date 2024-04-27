@@ -27,13 +27,13 @@ HitRecord Sphere::hit(Ray ray, float t0, float t1)
 	{
 		rec.surface = this;
 		rec.t = smaller;
-		rec.normal = _get_surface_normal(ray.evaluate(rec.t));
+		rec.normal = _get_surface_normal(ray.evaluate(rec.t)).normalized();
 	}
 	else if (bigger > t0 && bigger < t1)
 	{
 		rec.surface = this;
 		rec.t = bigger;
-		rec.normal = _get_surface_normal(ray.evaluate(rec.t));
+		rec.normal = _get_surface_normal(ray.evaluate(rec.t)).normalized();
 	}
 	return rec;
 }

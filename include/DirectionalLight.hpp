@@ -9,7 +9,7 @@ public:
 
 	DirectionalLight(const Vector3 &direction, const Vector3 &normal_irradiance);
 
-	Vector3 illuminate(Ray ray, HitRecord hrec) const;
+	Vector3 illuminate(Ray ray, HitRecord hrec, Group &group) const;
 
 private:
 

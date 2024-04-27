@@ -18,7 +18,7 @@ Vector3 Scene::raytrace(Ray ray, float t0, float t1, int recursive_depth)
 	{
 		Vector3 color {};
 		for (auto light : _lights)
-			color = color + light->illuminate(ray, hrec);
+			color = color + light->illuminate(ray, hrec, _group);
 		if (hrec.surface->material.mirror.length() != 0 && recursive_depth > 0)
 		{
 			Vector3 reflected_dir { ray.direction() - 2 * (ray.direction().dot(hrec.normal) * hrec.normal) };

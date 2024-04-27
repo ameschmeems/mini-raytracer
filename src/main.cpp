@@ -8,6 +8,7 @@
 #include "AmbientLight.hpp"
 #include "DirectionalLight.hpp"
 #include "PointLight.hpp"
+#include "Plane.hpp"
 
 constexpr float PI = 3.14;
 
@@ -39,7 +40,7 @@ int main()
 
 	Vector3 sphere_color { 0.8, 0.6, 1.0 };
 	Vector3 sphere_ambient { 0.4 * sphere_color };
-	Vector3 sphere_specular { sphere_color };
+	Vector3 sphere_specular { 0.6 * sphere_color };
 	Vector3 sphere_reflectance { sphere_color };
 	Material sphere_material { sphere_ambient, sphere_specular, sphere_reflectance, 2.0f, Vector3 {} };
 
@@ -47,24 +48,33 @@ int main()
 
 	Vector3 metal_sphere_color { 0.86, 0.86, 0.88 };
 	Vector3 metal_sphere_ambient { 0.4 * metal_sphere_color };
-	Vector3 metal_sphere_specular { metal_sphere_color };
+	Vector3 metal_sphere_specular { 0.6  *metal_sphere_color };
 	Vector3 metal_sphere_reflectance { metal_sphere_color };
 	Vector3 metal_sphere_mirror { 0.5, 0.5, 0.5 };
 	Material metal_sphere_material { metal_sphere_ambient, metal_sphere_specular, metal_sphere_reflectance, 124.0f, metal_sphere_mirror };
 
 	Sphere metal_sphere {Vector3 { -2.5, 0.0, -4.0 }, 1.0, metal_sphere_material};
 
+	Vector3 plane_color { 0.67, 0.84, 0.9 };
+	Vector3 plane_ambient { 0.6 * plane_color };
+	Vector3 plane_specular { 0, 0, 0 };
+	Vector3 plane_reflectance { plane_color };
+	Vector3 plane_mirror { 0, 0, 0 };
+	Material plane_material { plane_ambient, plane_specular, plane_reflectance, 2, plane_mirror };
+	Plane plane { Vector3 { 0, -1.0, 0 }, Vector3 { 0, 1, 0 }, plane_material };
+
 	Group group {};
 	group.add_surface(&sphere);
 	group.add_surface(&metal_sphere);
+	group.add_surface(&plane);
 
 	Scene scene { group };
 
-	AmbientLight ambient { Vector3 { 0.1, 0.1, 0.1 } };
-	scene.add_light(&ambient);
-	PointLight point_light { Vector3 { -1.5, 1.0, -2.9 }, Vector3 { 0.9, 0.9, 0.9 } };
+	// AmbientLight ambient { Vector3 { 0.5, 0.5, 0.5 } };
+	// scene.add_light(&ambient);
+	PointLight point_light { Vector3 { -1.5, 1.0, -2.9 }, Vector3 { 1, 1, 1 } };
 	scene.add_light(&point_light);
-	DirectionalLight directional_light { Vector3 { 1.0, 1.0, 3.0 }, Vector3 { 2, 2, 2 } };
+	DirectionalLight directional_light { Vector3 { 3.0, 3.0, 3.0 }, Vector3 { 1, 1, 1 } };
 	scene.add_light(&directional_light);
 
 	// Get position for upper left pixel
